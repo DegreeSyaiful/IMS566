@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Books</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .badge { border-radius: 1rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- Sidebar -->
+<nav id="sidebar" class="sidebar">
+  <div class="p-4">
+    <h4>RakBuku</h4>
+  </div>
+  <a href="dashboard.html"><i class="bi bi-house me-2"></i>Home</a>
+  <a href="mainprofile.html"><i class="bi bi-person me-2"></i>My Profile</a>
+  <a href="dataview1.html" class="active"><i class="bi bi-book me-2"></i>My Books</a>
+  <a href="dataview2.html"><i class="bi bi-bar-chart me-2"></i>Analytics</a>
+  <a href="dataview3.html"><i class="bi bi-award me-2"></i>Achievements</a>
+  <a href="#"><i class="bi bi-gear me-2"></i>Settings</a>
+  <a href="credits.html" ><i class="bi bi-info-circle me-2"></i>Credits</a>
+</nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <button class="btn btn-outline-secondary btn-sm me-3" onclick="toggleSidebar()">
+          <i class="bi bi-list"></i>
+        </button>
+        <strong>My Books</strong>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="me-3">Hello, <strong>Admin</strong></span>
+        <img src="assets/diplomame.png" class="rounded-circle avatar-sm me-3" alt="avatar" />
+        <button class="btn btn-outline-danger btn-sm" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Your Book Collection</h4>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover" id="bookTable">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Cover</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Current Page</th>
+              <th scope="col">Time Spent</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+  <!-- 1st Book -->
+  <tr data-desc="<strong>Title:</strong> Tuhan Aku Ingin Hijrah\n<strong>ISBN:</strong> 9789672118459\n<strong>Publisher:</strong> Tarbiah Sentap\n<strong>Author:</strong> Adnin Roslan\n<strong>Year Published:</strong> 2024\n<strong>Pages:</strong> 581\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Paperback\n<strong>Weight (kg):</strong> 0.607kg\n<strong>Dimensions (cm):</strong> 23cm x 15cm x 4cm\n\n<strong>Synopsis:</strong> A spiritual self-help journey encouraging readers to seek change, embrace repentance, and grow closer to Allah.">
+    <th scope="row">1</th>
+    <td><img src="assets/Tuhan, aku ingin hijrah.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>Tuhan, Aku Ingin Hijrah</td>
+    <td>Adnin Roslan</td>
+    <td>581</td>
+    <td>14h</td>
+    <td><span class="badge bg-success d-inline-flex align-items-center">
+  <i class="bi bi-check-circle me-1"></i> Completed
+</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn">View</button></td>
+  </tr>
+
+  <!-- 2nd Book -->
+  <tr data-desc="<strong>Title:</strong> Bicara Hati\n<strong>ISBN:</strong> 9789672760597\n<strong>Publisher:</strong> Alaf 21\n<strong>Author:</strong> Damya Hanna\n<strong>Year Published:</strong> 2012\n<strong>Pages:</strong> 576\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Paperback\n<strong>Weight (kg):</strong> 0.6kg\n<strong>Dimensions (cm):</strong> 13 × 19.5 cm\n\n<strong>Synopsis:</strong> A touching romance novel exploring the emotional journey of love, misunderstandings, and forgiveness.">
+    <th scope="row">2</th>
+    <td><img src="assets/bicara hati.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>Bicara Hati</td>
+    <td>Damya Hanna</td>
+    <td>0</td>
+    <td>0h</td>
+    <td><span class="badge bg-warning text-dark">Pending</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn">View</button></td>
+  </tr>
+
+  <!-- 3rd Book -->
+  <tr data-desc="<strong>Title:</strong> Reckless\n<strong>ISBN:</strong> 9781665955430\n<strong>Publisher:</strong> Simon & Schuster Books for Young Readers\n<strong>Author:</strong> Lauren Roberts\n<strong>Year Published:</strong> 2024\n<strong>Pages:</strong> 400\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Hardcover\n<strong>Weight (kg):</strong> 0.45kg\n<strong>Dimensions (cm):</strong> 14 × 21 × 2.5 cm\n\n<strong>Synopsis:</strong> In a world where power and bloodlines define worth, a fierce heroine rises to defy a ruthless monarchy in this thrilling fantasy sequel.">
+    <th scope="row">3</th>
+    <td><img src="assets/reckless.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>Reckless</td>
+    <td>Lauren Roberts</td>
+    <td>0</td>
+    <td>0h</td>
+    <td><span class="badge bg-warning text-dark">Pending</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn">View</button></td>
+  </tr>
+
+  <!-- 4th Book -->
+  <tr data-desc="<strong>Title:</strong> The Midnight Library\n<strong>ISBN:</strong> 9781443455879\n<strong>Publisher:</strong> HarperAvenue\n<strong>Author:</strong> Matt Haig\n<strong>Year Published:</strong> 2020\n<strong>Pages:</strong> 304\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Paperback\n<strong>Weight (kg):</strong> 0.22kg\n<strong>Dimensions (cm):</strong> 14 × 21.5 × 1.9 cm\n\n<strong>Synopsis:</strong> Between life and death lies a library. Nora Seed explores parallel lives to discover what truly makes life worth living.">
+    <th scope="row">4</th>
+    <td><img src="assets/midnight library.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>The Midnight Library</td>
+    <td>Matt Haig</td>
+    <td>287</td>
+    <td>6h</td>
+    <td><span class="badge bg-primary">Reading</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn">View</button></td>
+  </tr>
+
+  <!-- 5th Book -->
+  <tr data-desc="<strong>Title:</strong> Once Upon a Broken Heart\n<strong>ISBN:</strong> 9781250268389\n<strong>Publisher:</strong> Flatiron Books\n<strong>Author:</strong> Stephanie Garber\n<strong>Year Published:</strong> 2021\n<strong>Pages:</strong> 417\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Paperback\n<strong>Weight (kg):</strong> 0.26kg\n<strong>Dimensions (cm):</strong> 13.5 × 20.5 × 2.5 cm\n\n<strong>Synopsis:</strong> When Evangeline makes a deal with the Prince of Hearts, her quest for true love takes a magical—and dangerous—turn.">
+    <th scope="row">5</th>
+    <td><img src="assets/once upon a broken heart.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>Once Upon a Broken Heart</td>
+    <td>Stephanie Garber</td>
+    <td>417</td>
+    <td>7h</td>
+    <td><span class="badge bg-success d-inline-flex align-items-center">
+  <i class="bi bi-check-circle me-1"></i> Completed
+</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn">View</button></td>
+  </tr>
+
+  <!-- 6th Book -->
+  <tr data-desc="<strong>Title:</strong> The Ballad of Songbirds and Snakes\n<strong>ISBN:</strong> 9781339016580\n<strong>Publisher:</strong> Scholastic Inc.\n<strong>Author:</strong> Suzanne Collins\n<strong>Year Published:</strong> 2020\n<strong>Pages:</strong> 528\n<strong>Print:</strong> Black & White\n<strong>Format:</strong> Paperback\n<strong>Weight (kg):</strong> 0.38kg\n<strong>Dimensions (cm):</strong> 13 × 20 × 3 cm\n\n<strong>Synopsis:</strong> A prequel to *The Hunger Games*, this novel follows young Coriolanus Snow as he mentors a tribute in the 10th Games—questioning morality and ambition.">
+    <th scope="row">6</th>
+    <td><img src="assets/songbirds and snakes.jpg" class="book-thumbnail" alt="Cover"></td>
+    <td>The Ballad of Songbirds and Snakes</td>
+    <td>Suzanne Collins</td>
+    <td>528</td>
+    <td>10h</td>
+    <td><span class="badge bg-success d-inline-flex align-items-center">
+  <i class="bi bi-check-circle me-1"></i> Completed
+</span></td>
+    <td><button class="btn btn-sm btn-outline-info view-btn" title="View details" data-bs-toggle="tooltip">
+  View
+</button></td>
+  </tr>
+</tbody>
+
+        </table>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-muted py-3 border-top mt-auto">
+      <small>
+        &copy; 2025 RakBuku. All rights reserved. |
+        <a href="#" class="text-decoration-none text-muted">Privacy Policy</a> |
+        <a href="#" class="text-decoration-none text-muted">Contact</a>
+      </small>
+    </footer>
+  </div>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Book Description</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="bookDescription">
+        <!-- Description will appear here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function logout() {
+    if (confirm("Are you sure you want to log out?")) {
+      window.location.href = "index.html";
+    }
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    
+    sidebar.classList.toggle('collapsed');
+
+    if (sidebar.classList.contains('collapsed')) {
+      mainContent.style.marginLeft = '0';
+    } else {
+      mainContent.style.marginLeft = '250px';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    if (sidebar.classList.contains('collapsed')) {
+      mainContent.style.marginLeft = '0';
+    } else {
+      mainContent.style.marginLeft = '250px';
+    }
+  });
+
+  // Description Modal Logic
+  document.addEventListener("DOMContentLoaded", function () {
+    const viewButtons = document.querySelectorAll(".view-btn");
+    const modal = new bootstrap.Modal(document.getElementById("bookModal"));
+    const descriptionBox = document.getElementById("bookDescription");
+    const modalTitle = document.getElementById("bookModalLabel");
+
+    viewButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const bookRow = this.closest("tr");
+        const title = bookRow.children[2].textContent;
+        let desc = bookRow.getAttribute("data-desc");
+
+        desc = desc.replace(/\\n/g, "<br>");
+        modalTitle.textContent = title;
+        descriptionBox.innerHTML = desc;
+
+        modal.show();
+      });
+    });
+  });
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipEl => new bootstrap.Tooltip(tooltipEl));
+</script>
+</body>
+</html>

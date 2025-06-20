@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"  rel="stylesheet"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>    
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .profile-avatar {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .bookshelf-tab {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: -1px;
+    }
+
+    .bookshelf-tab.active {
+      background-color: #f1f5f9;
+      border-bottom-color: white;
+    }
+
+    /* Horizontal Scrollable Shelf */
+    .shelf-group {
+      display: none;
+    }
+
+    .shelf-group.horizontal-scroll {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 1rem 0;
+    }
+
+    .shelf-group.horizontal-scroll .card {
+      display: inline-block;
+      vertical-align: top;
+      width: 140px;
+      margin-right: 1rem;
+    }
+
+    .shelf-group.horizontal-scroll .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar">
+    <div class="p-4">
+      <h4>RakBuku</h4>
+    </div>
+    <a href="dashboard.html"><i class="bi bi-house me-2"></i>Home</a>
+    <a href="mainprofile.html" class="active"><i class="bi bi-person me-2"></i>My Profile</a>
+    <a href="dataview1.html"><i class="bi bi-book me-2"></i>My Books</a>
+    <a href="dataview2.html"><i class="bi bi-bar-chart me-2"></i>Analytics</a>
+    <a href="dataview3.html"><i class="bi bi-award me-2"></i>Achievements</a>
+    <a href="#"><i class="bi bi-gear me-2"></i>Settings</a>
+    <a href="credits.html"><i class="bi bi-info-circle me-2"></i>Credits</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <button class="btn btn-outline-secondary btn-sm me-3" onclick="toggleSidebar()">
+          <i class="bi bi-list"></i>
+        </button>
+        <strong>My Profile</strong>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="me-3">Hello, <strong>Admin</strong></span>
+        <img src="assets/diplomame.png" id="profileAvatar" class="rounded-circle avatar-sm me-3" alt="avatar" />
+        <button class="btn btn-outline-danger btn-sm" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="p-4">
+      <div class="row g-4">
+        <!-- Left Column: Profile Summary & Bookshelves -->
+        <div class="col-lg-8 col-md-12">
+          <!-- Profile Summary -->
+          <div class="card shadow-sm mb-4 w-100">
+            <div class="card-body d-flex align-items-start gap-4">
+              <img src="assets/diplomame.png" id="profileAvatar" class="profile-avatar" alt="Profile Picture">
+              <div>
+                <h4>Admin</h4>
+                <!-- Public Account Info -->
+                <ul class="list-unstyled">
+                  <li><i class="bi bi-envelope me-2"></i><strong>Email:</strong> admin@rakbuku.com</li>
+                  <li><i class="bi bi-calendar me-2"></i><strong>Member Since:</strong> June 2025</li>
+                  <li><i class="bi bi-globe me-2"></i><strong>Status:</strong> Public</li>
+                </ul>
+                <!-- Optional Reading Stats -->
+                <div class="mt-2">
+                  <span class="badge bg-success">Reading Streak: 7 days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bookshelves Tabs -->
+          <h5>YOUR BOOKSHELVES</h5>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button class="bookshelf-tab active" data-shelf="to-read">to-read (2)</button>
+            <button class="bookshelf-tab" data-shelf="currently-reading">currently-reading (1)</button>
+            <button class="bookshelf-tab" data-shelf="read">read (3)</button>
+          </div>
+
+          <!-- Horizontal Book List -->
+          <div id="shelfBooksList" class="mb-4">
+            <!-- to-read -->
+            <div class="shelf-group horizontal-scroll d-none" id="shelf-to-read">
+              <!-- Book 1 -->
+              <div class="card shadow-sm">
+                <img src="assets/bicara hati.jpg" class="card-img-top" alt="Bicara Hati">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">Bicara Hati</h6>
+                  <small class="text-muted">by Damya Hanna</small>
+                </div>
+              </div>
+              <!-- Book 2 -->
+              <div class="card shadow-sm">
+                <img src="assets/reckless.jpg" class="card-img-top" alt="Reckless">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">Reckless</h6>
+                  <small class="text-muted">by Lauren Roberts</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- currently-reading -->
+            <div class="shelf-group horizontal-scroll d-none" id="shelf-currently-reading">
+              <!-- Book 1 -->
+              <div class="card shadow-sm">
+                <img src="assets/midnight library.jpg" class="card-img-top" alt="Midnight Library">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">The Midnight Library</h6>
+                  <small class="text-muted">by Matt Haig</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- read -->
+            <div class="shelf-group horizontal-scroll" id="shelf-read">
+              <!-- Book 1 -->
+              <div class="card shadow-sm">
+                <img src="assets/Tuhan, aku ingin hijrah.jpg" class="card-img-top" alt="Book Cover">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">Tuhan, Aku Ingin Hijrah</h6>
+                  <small class="text-muted">by Adnin Roslan</small>
+                </div>
+              </div>
+              <!-- Book 2 -->
+              <div class="card shadow-sm">
+                <img src="assets/once upon a broken heart.jpg" class="card-img-top" alt="Cover">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">Once Upon a Broken Heart</h6>
+                  <small class="text-muted">by Stephanie Garber</small>
+                </div>
+              </div>
+              <!-- Book 3 -->
+              <div class="card shadow-sm">
+                <img src="assets/songbirds and snakes.jpg" class="card-img-top" alt="Cover">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1">Songbirds and Snakes</h6>
+                  <small class="text-muted">by Suzanne Collins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Currently Reading, Friends, Favorite Genres -->
+        <div class="col-lg-4 col-md-12">
+          <!-- Currently Reading -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">CURRENTLY READING</h5>
+              <div class="d-flex align-items-center">
+                <img src="assets/midnight library.jpg" class="me-3 book-thumbnail" style="width: 60px; height: 90px;" alt="Book Cover">
+                <div>
+                  <strong>The Midnight Library</strong><br>
+                  <small>Matt Haig</small>
+                  <div class="mt-2">
+                    <span class="badge bg-primary">Reading</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin's Friends -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">ADMIN'S FRIENDS</h5>
+              <div class="d-flex align-items-center justify-content-between">
+                <span>You have 0 friends</span>
+                <button class="btn btn-sm btn-outline-info" aria-label="Invite Friends">
+                  Invite Friends »
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Favorite Genres -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">FAVORITE GENRES</h5>
+              <p class="mb-0 small text-muted">Comics, Fantasy, and Manga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-muted py-3 border-top mt-auto">
+      <small>
+        &copy; 2025 RakBuku. All rights reserved. |
+        <a href="#" class="text-decoration-none text-muted">Privacy Policy</a> |
+        <a href="#" class="text-decoration-none text-muted">Contact</a>
+      </small>
+    </footer>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
+<script>
+  function logout() {
+    if (confirm("Are you sure you want to log out?")) {
+      window.location.href = "index.html";
+    }
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    sidebar.classList.toggle('collapsed');
+
+    if (sidebar.classList.contains('collapsed')) {
+      mainContent.style.marginLeft = '0';
+    } else {
+      mainContent.style.marginLeft = '250px';
+    }
+  }
+
+  // Initialize sidebar state
+  window.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    if (sidebar.classList.contains('collapsed')) {
+      mainContent.style.marginLeft = '0';
+    } else {
+      mainContent.style.marginLeft = '250px';
+    }
+  });
+
+  // Handle bookshelf tab switching
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".bookshelf-tab");
+    const shelves = document.querySelectorAll(".shelf-group");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Update tab styles
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Hide all shelves
+        shelves.forEach(shelf => shelf.classList.add("d-none"));
+
+        // Show selected shelf
+        const shelfId = tab.getAttribute("data-shelf");
+        document.getElementById(`shelf-${shelfId}`).classList.remove("d-none");
+      });
+    });
+
+    // Show default shelf on load
+    const defaultTab = document.querySelector(".bookshelf-tab.active");
+    if (defaultTab) {
+      const shelfId = defaultTab.getAttribute("data-shelf");
+      shelves.forEach(shelf => shelf.classList.add("d-none"));
+      document.getElementById(`shelf-${shelfId}`).classList.remove("d-none");
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+/* --------------------------------------------------
+   1. Reset & Base Styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* --------------------------------------------------
+   2. Layout Components
+-------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #1e3a8a; /* Navy blue - librarian feel */
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a:focus {
+  background-color: #374151;
+  outline: none;
+}
+
+.main-content {
+  flex-grow: 1;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* --------------------------------------------------
+   3. Header & Footer
+-------------------------------------------------- */
+
+.header,
+footer {
+  flex-shrink: 0;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.header .d-flex strong {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  background-color: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------
+   4. Content Elements
+-------------------------------------------------- */
+
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.book-thumbnail {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.chart-wrapper {
+  height: 220px;
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+canvas {
+  height: 100% !important;
+}
+
+/* Card Titles */
+.card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  line-height: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    -webkit-line-clamp: 2;
+    font-size: 0.85rem;
+  }
+}
+
+/* Book Cards in Profile */
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar active tab */
+.sidebar a.active {
+  background-color: #374151;
+  font-weight: 500;
+}
